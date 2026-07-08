@@ -28,6 +28,35 @@
   var userTranscript = document.getElementById('user-transcript');
   var agentTranscript = document.getElementById('agent-transcript');
   var menuContent = document.getElementById('menu-content');
+  var agentRobot = document.querySelector('.agent-robot');
+
+  // Two OFF paths:
+  //   setAgentSpeaking(false)          — debounced 400ms; used only from
+  //     source.onended where brief inter-chunk gaps (network jitter) would
+  //     otherwise flicker the pop-in.
+  //   setAgentSpeakingImmediate(false) — synchronous; used from clearPlayback
+  //     (barge-in / interruptionSignal) where the robot must vanish the
+  //     instant audio is silenced.
+  var agentSpeakingOffTimer = null;
+  function setAgentSpeaking(on) {
+    if (!agentRobot) return;
+    if (on) {
+      if (agentSpeakingOffTimer) { clearTimeout(agentSpeakingOffTimer); agentSpeakingOffTimer = null; }
+      agentRobot.classList.add('speaking');
+    } else {
+      if (agentSpeakingOffTimer) return;
+      agentSpeakingOffTimer = setTimeout(function () {
+        agentSpeakingOffTimer = null;
+        agentRobot.classList.remove('speaking');
+      }, 400);
+    }
+  }
+  function setAgentSpeakingImmediate(on) {
+    if (!agentRobot) return;
+    if (agentSpeakingOffTimer) { clearTimeout(agentSpeakingOffTimer); agentSpeakingOffTimer = null; }
+    if (on) agentRobot.classList.add('speaking');
+    else agentRobot.classList.remove('speaking');
+  }
 
   // ─── Audio Engine (AudioWorklet) ─────────────────────────────────
 
@@ -117,6 +146,9 @@
   function stopRecording() {
     isRecording = false;
     micBtn.classList.remove('recording');
+    // Do NOT clearPlayback() here — stopping the mic should not truncate the
+    // agent's currently-playing farewell/reply. Queued audio drains via
+    // source.onended and the robot hides after the last chunk.
 
     if (captureNode) {
       captureNode.disconnect();
@@ -157,10 +189,14 @@
     nextPlayTime += buffer.duration;
 
     currentSources.push(source);
+    setAgentSpeaking(true);
     source.onended = function () {
       var idx = currentSources.indexOf(source);
       if (idx !== -1) currentSources.splice(idx, 1);
-      if (currentSources.length === 0 && isRecording) updateStatus('Listening...');
+      if (currentSources.length === 0) {
+        setAgentSpeaking(false);
+        if (isRecording) updateStatus('Listening...');
+      }
     };
 
     if (isRecording) updateStatus('Agent speaking...');
@@ -172,6 +208,9 @@
     }
     currentSources = [];
     nextPlayTime = 0;
+    // Barge-in / interruption: the robot must vanish immediately, not after
+    // the 400ms debounce that only exists for inter-chunk jitter.
+    setAgentSpeakingImmediate(false);
   }
 
   function downsample(float32, ratio) {
@@ -234,6 +273,9 @@
     };
 
     ws.onclose = function () {
+      // Do NOT clearPlayback() — any queued audio should drain naturally.
+      // Web Audio playback is independent of the socket; source.onended
+      // will hide the robot after the last chunk finishes.
       updateStatus('Disconnected — refreshing reconnects');
     };
 

@@ -8,13 +8,30 @@
 </head>
 <body>
 
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-scanlines"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
   <header>
-    <div class="logo">Fast X Food</div>
+    <div class="logo" data-text="Fast X Food">Fast X Food</div>
+    <div class="system-status" aria-hidden="true">
+      <span class="status-dot"></span>
+      <span class="status-label">SYSTEM ONLINE</span>
+    </div>
     <div id="loyalty-bar" class="loyalty-bar hidden"></div>
   </header>
 
   <main>
     <section id="order-panel" class="panel order-panel">
+      <span class="panel-corner panel-corner-tl" aria-hidden="true"></span>
+      <span class="panel-corner panel-corner-tr" aria-hidden="true"></span>
+      <span class="panel-corner panel-corner-bl" aria-hidden="true"></span>
+      <span class="panel-corner panel-corner-br" aria-hidden="true"></span>
       <h2>Your Order</h2>
       <div id="order-items" class="order-items">
         <p class="empty-order">Your order is empty.<br>Start speaking to add items.</p>
@@ -33,6 +50,10 @@
     </section>
 
     <section class="panel menu-panel">
+      <span class="panel-corner panel-corner-tl" aria-hidden="true"></span>
+      <span class="panel-corner panel-corner-tr" aria-hidden="true"></span>
+      <span class="panel-corner panel-corner-bl" aria-hidden="true"></span>
+      <span class="panel-corner panel-corner-br" aria-hidden="true"></span>
       <h2>Menu</h2>
       <div id="menu-content" class="menu-content">
         <p class="loading">Loading menu...</p>
@@ -42,12 +63,43 @@
 
   <footer>
     <div class="voice-controls">
-      <button id="mic-btn" class="mic-btn" title="Hold to talk or click to toggle">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-          <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-        </svg>
-      </button>
+      <div class="voice-cluster">
+        <button id="mic-btn" class="mic-btn" title="Hold to talk or click to toggle">
+          <span class="mic-ring mic-ring-1" aria-hidden="true"></span>
+          <span class="mic-ring mic-ring-2" aria-hidden="true"></span>
+          <span class="mic-ring mic-ring-3" aria-hidden="true"></span>
+          <span class="mic-core" aria-hidden="true"></span>
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+          </svg>
+        </button>
+        <div class="agent-robot" aria-hidden="true">
+          <span class="robot-wave robot-wave-1"></span>
+          <span class="robot-wave robot-wave-2"></span>
+          <span class="robot-wave robot-wave-3"></span>
+          <div class="robot-antenna"><span class="robot-antenna-orb"></span></div>
+          <div class="robot-head">
+            <span class="robot-eye robot-eye-l"></span>
+            <span class="robot-eye robot-eye-r"></span>
+            <span class="robot-cheek robot-cheek-l"></span>
+            <span class="robot-cheek robot-cheek-r"></span>
+            <div class="robot-mouth">
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+            </div>
+          </div>
+          <div class="robot-neck"></div>
+          <div class="robot-body">
+            <span class="robot-led robot-led-1"></span>
+            <span class="robot-led robot-led-2"></span>
+            <span class="robot-led robot-led-3"></span>
+          </div>
+        </div>
+      </div>
       <div id="voice-status" class="voice-status">Click microphone to start</div>
     </div>
     <div id="transcript" class="transcript">
