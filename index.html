@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fast X Food — Drive-Through</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">Fast X Food</div>
+    <div id="loyalty-bar" class="loyalty-bar hidden"></div>
+  </header>
+
+  <main>
+    <section id="order-panel" class="panel order-panel">
+      <h2>Your Order</h2>
+      <div id="order-items" class="order-items">
+        <p class="empty-order">Your order is empty.<br>Start speaking to add items.</p>
+      </div>
+      <div id="order-footer" class="order-footer hidden">
+        <div class="order-line"><span>Subtotal</span><span id="order-subtotal">$0.00</span></div>
+        <div class="order-line secondary"><span>Calories</span><span id="order-calories">0 cal</span></div>
+      </div>
+      <div id="order-confirmed" class="order-confirmed hidden">
+        <div class="confirmed-icon">&#10003;</div>
+        <div id="confirmed-number" class="confirmed-number"></div>
+        <div id="confirmed-total" class="confirmed-total"></div>
+        <div id="confirmed-wait" class="confirmed-wait"></div>
+        <div class="confirmed-msg">Pull forward to the window for payment.</div>
+      </div>
+    </section>
+
+    <section class="panel menu-panel">
+      <h2>Menu</h2>
+      <div id="menu-content" class="menu-content">
+        <p class="loading">Loading menu...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="voice-controls">
+      <button id="mic-btn" class="mic-btn" title="Hold to talk or click to toggle">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+          <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+      </button>
+      <div id="voice-status" class="voice-status">Click microphone to start</div>
+    </div>
+    <div id="transcript" class="transcript">
+      <div id="user-transcript" class="user-text"></div>
+      <div id="agent-transcript" class="agent-text"></div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
