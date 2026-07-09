@@ -1143,14 +1143,13 @@ footer::after {
 }
 
 .agent-robot {
-  /* Absolute so the robot occupies NO flex space in .voice-cluster — the
-     cluster shrink-wraps to the mic and the "Click microphone to start"
-     status label centers directly under the mic (not under an invisible
-     robot slot). Sits to the right of the mic (mic width 76px + 18px gap). */
-  position: absolute;
-  left: calc(100% + 18px);
+  /* Fixed and centered in the viewport so the robot appears in the middle
+     of the screen when the agent is speaking. */
+  position: fixed;
+  left: 50%;
   top: 50%;
-  margin-top: -50px; /* half of height:100px for vertical centering */
+  margin-left: -36px; /* half of width:72px */
+  margin-top: -50px;  /* half of height:100px */
   width: 72px;
   height: 100px;
   display: flex;
@@ -1159,12 +1158,12 @@ footer::after {
   gap: 0;
   --robot-cyan: var(--neon-cyan);
   --robot-orange: var(--neon-orange);
-  z-index: 2;
+  z-index: 11;
   /* Hidden by default: only visible while the agent is speaking. */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform-origin: center bottom;
+  transform-origin: center center;
   transition: opacity 300ms ease-out, visibility 0s linear 300ms;
 }
 
@@ -1193,9 +1192,9 @@ footer::after {
 }
 
 @keyframes robot-appear {
-  0%   { transform: scale(0.55) translateY(8px); }
-  60%  { transform: scale(1.08) translateY(-3px); }
-  100% { transform: scale(1) translateY(0); }
+  0%   { transform: scale(1.2) translateY(8px); }
+  60%  { transform: scale(2.4) translateY(-3px); }
+  100% { transform: scale(2.2) translateY(0); }
 }
 
 /* --- Antenna --- */
@@ -1415,8 +1414,8 @@ footer::after {
 
 /* --- Robot keyframes --- */
 @keyframes robot-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+  0%, 100% { transform: scale(2.2) translateY(0); }
+  50% { transform: scale(2.2) translateY(-3px); }
 }
 
 @keyframes robot-bob {

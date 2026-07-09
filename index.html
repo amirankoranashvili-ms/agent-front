@@ -1,113 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fast X Food — Drive-Through</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <div class="bg-layer" aria-hidden="true">
-    <div class="bg-grid"></div>
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
-    <div class="bg-scanlines"></div>
-    <div class="bg-vignette"></div>
-  </div>
-
-  <header>
-    <div class="logo" data-text="Fast X Food">Fast X Food</div>
-    <div class="system-status" aria-hidden="true">
-      <span class="status-dot"></span>
-      <span class="status-label">SYSTEM ONLINE</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast X Food — Drive-Through</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-layer" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-orb bg-orb-1"></div>
+      <div class="bg-orb bg-orb-2"></div>
+      <div class="bg-orb bg-orb-3"></div>
+      <div class="bg-scanlines"></div>
+      <div class="bg-vignette"></div>
     </div>
-    <div id="loyalty-bar" class="loyalty-bar hidden"></div>
-  </header>
 
-  <main>
-    <section id="order-panel" class="panel order-panel">
-      <span class="panel-corner panel-corner-tl" aria-hidden="true"></span>
-      <span class="panel-corner panel-corner-tr" aria-hidden="true"></span>
-      <span class="panel-corner panel-corner-bl" aria-hidden="true"></span>
-      <span class="panel-corner panel-corner-br" aria-hidden="true"></span>
-      <h2>Your Order</h2>
-      <div id="order-items" class="order-items">
-        <p class="empty-order">Your order is empty.<br>Start speaking to add items.</p>
+    <header>
+      <div class="logo" data-text="Fast X Food">Fast X Food</div>
+      <div class="system-status" aria-hidden="true">
+        <span class="status-dot"></span>
+        <span class="status-label">SYSTEM ONLINE</span>
       </div>
-      <div id="order-footer" class="order-footer hidden">
-        <div class="order-line"><span>Subtotal</span><span id="order-subtotal">$0.00</span></div>
-        <div class="order-line secondary"><span>Calories</span><span id="order-calories">0 cal</span></div>
-      </div>
-      <div id="order-confirmed" class="order-confirmed hidden">
-        <div class="confirmed-icon">&#10003;</div>
-        <div id="confirmed-number" class="confirmed-number"></div>
-        <div id="confirmed-total" class="confirmed-total"></div>
-        <div id="confirmed-wait" class="confirmed-wait"></div>
-        <div class="confirmed-msg">Pull forward to the window for payment.</div>
-      </div>
-    </section>
+      <div id="loyalty-bar" class="loyalty-bar hidden"></div>
+    </header>
 
-    <section class="panel menu-panel">
-      <span class="panel-corner panel-corner-tl" aria-hidden="true"></span>
-      <span class="panel-corner panel-corner-tr" aria-hidden="true"></span>
-      <span class="panel-corner panel-corner-bl" aria-hidden="true"></span>
-      <span class="panel-corner panel-corner-br" aria-hidden="true"></span>
-      <h2>Menu</h2>
-      <div id="menu-content" class="menu-content">
-        <p class="loading">Loading menu...</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="voice-controls">
-      <div class="voice-cluster">
-        <button id="mic-btn" class="mic-btn" title="Hold to talk or click to toggle">
-          <span class="mic-ring mic-ring-1" aria-hidden="true"></span>
-          <span class="mic-ring mic-ring-2" aria-hidden="true"></span>
-          <span class="mic-ring mic-ring-3" aria-hidden="true"></span>
-          <span class="mic-core" aria-hidden="true"></span>
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-          </svg>
-        </button>
-        <div class="agent-robot" aria-hidden="true">
-          <span class="robot-wave robot-wave-1"></span>
-          <span class="robot-wave robot-wave-2"></span>
-          <span class="robot-wave robot-wave-3"></span>
-          <div class="robot-antenna"><span class="robot-antenna-orb"></span></div>
-          <div class="robot-head">
-            <span class="robot-eye robot-eye-l"></span>
-            <span class="robot-eye robot-eye-r"></span>
-            <span class="robot-cheek robot-cheek-l"></span>
-            <span class="robot-cheek robot-cheek-r"></span>
-            <div class="robot-mouth">
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-            </div>
+    <main>
+      <section id="order-panel" class="panel order-panel">
+        <span class="panel-corner panel-corner-tl" aria-hidden="true"></span>
+        <span class="panel-corner panel-corner-tr" aria-hidden="true"></span>
+        <span class="panel-corner panel-corner-bl" aria-hidden="true"></span>
+        <span class="panel-corner panel-corner-br" aria-hidden="true"></span>
+        <h2>Your Order</h2>
+        <div id="order-items" class="order-items">
+          <p class="empty-order">
+            Your order is empty.<br />Start speaking to add items.
+          </p>
+        </div>
+        <div id="order-footer" class="order-footer hidden">
+          <div class="order-line">
+            <span>Subtotal</span><span id="order-subtotal">$0.00</span>
           </div>
-          <div class="robot-neck"></div>
-          <div class="robot-body">
-            <span class="robot-led robot-led-1"></span>
-            <span class="robot-led robot-led-2"></span>
-            <span class="robot-led robot-led-3"></span>
+          <div class="order-line secondary">
+            <span>Calories</span><span id="order-calories">0 cal</span>
           </div>
         </div>
-      </div>
-      <div id="voice-status" class="voice-status">Click microphone to start</div>
-    </div>
-    <div id="transcript" class="transcript">
-      <div id="user-transcript" class="user-text"></div>
-      <div id="agent-transcript" class="agent-text"></div>
-    </div>
-  </footer>
+        <div id="order-confirmed" class="order-confirmed hidden">
+          <div class="confirmed-icon">&#10003;</div>
+          <div id="confirmed-number" class="confirmed-number"></div>
+          <div id="confirmed-total" class="confirmed-total"></div>
+          <div id="confirmed-wait" class="confirmed-wait"></div>
+          <div class="confirmed-msg">
+            Pull forward to the window for payment.
+          </div>
+        </div>
+      </section>
 
-  <script src="app.js"></script>
-</body>
+      <section class="panel menu-panel">
+        <span class="panel-corner panel-corner-tl" aria-hidden="true"></span>
+        <span class="panel-corner panel-corner-tr" aria-hidden="true"></span>
+        <span class="panel-corner panel-corner-bl" aria-hidden="true"></span>
+        <span class="panel-corner panel-corner-br" aria-hidden="true"></span>
+        <h2>Menu</h2>
+        <div id="menu-content" class="menu-content">
+          <p class="loading">Loading menu...</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="voice-controls">
+        <div class="voice-cluster">
+          <button
+            id="mic-btn"
+            class="mic-btn"
+            title="Hold to talk or click to toggle"
+          >
+            <span class="mic-ring mic-ring-1" aria-hidden="true"></span>
+            <span class="mic-ring mic-ring-2" aria-hidden="true"></span>
+            <span class="mic-ring mic-ring-3" aria-hidden="true"></span>
+            <span class="mic-core" aria-hidden="true"></span>
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <path
+                d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"
+              />
+              <path
+                d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div id="voice-status" class="voice-status">
+          Click microphone to start
+        </div>
+      </div>
+      <div id="transcript" class="transcript">
+        <div id="user-transcript" class="user-text"></div>
+        <div id="agent-transcript" class="agent-text"></div>
+      </div>
+    </footer>
+
+    <div class="agent-robot" aria-hidden="true">
+      <span class="robot-wave robot-wave-1"></span>
+      <span class="robot-wave robot-wave-2"></span>
+      <span class="robot-wave robot-wave-3"></span>
+      <div class="robot-antenna">
+        <span class="robot-antenna-orb"></span>
+      </div>
+      <div class="robot-head">
+        <span class="robot-eye robot-eye-l"></span>
+        <span class="robot-eye robot-eye-r"></span>
+        <span class="robot-cheek robot-cheek-l"></span>
+        <span class="robot-cheek robot-cheek-r"></span>
+        <div class="robot-mouth">
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+          <span class="wave-bar"></span>
+        </div>
+      </div>
+      <div class="robot-neck"></div>
+      <div class="robot-body">
+        <span class="robot-led robot-led-1"></span>
+        <span class="robot-led robot-led-2"></span>
+        <span class="robot-led robot-led-3"></span>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>
